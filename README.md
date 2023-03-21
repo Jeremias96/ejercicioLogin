@@ -1,27 +1,88 @@
-# ejercicioLogin 
+# Ejercicio Login 
 
 Proyecto usado como ejercicio basado en un login con los endpoint /sign-up y /login
 
 Utiliza Java 8 y Spring 2.7
 
-Para limpiar /build:
+## Para limpiar /build:
 
+```
 /gradlew clean
+```
 
-Para compilar y correr tests:
+## Para compilar y correr tests:
 
+```
 /gradlew build
+```
 
-Para compilar sin tests:
+## Para compilar sin tests:
 
+```
 /gradlew build --x test
+```
 
-Endpoints:
+## Endpoints:
 
-/v1/sign-up: Registra un nuevo usuario
--Recibe un nombre, email, password y lista de telefonos
--Devuelve el usuario creado
+**/v1/sign-up** : Registra un nuevo usuario
 
-/v1/login: Verifica un usuario ya registrado
--Recibe un token de login
--Devuelve el usuario guardado
+- Recibe un nombre, email, password y lista de telefonos. Ejemplo:
+
+```
+{
+    "name": "User Test",
+    "email": "user@test.com",
+    "password": "1d2Eabcdef",
+    "phones": [
+        {
+            "number": 123456789,
+            "cityCode": 2966,
+            "countryCode": "+54"
+        }
+    ]
+}
+```
+
+- Devuelve el usuario creado:
+
+```
+{
+    "id": "98b07092-7ef4-4d41-a6a6-c2b0ee61efb5",
+    "created": "2023-03-20T22:55:47.087Z",
+    "lastLogin": "2023-03-20T22:55:47.087Z",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKZXJlbWlhc0xlaXRvbiIsImVtYWlsIjoiamVyZW1pYXNAbGVpdG9uLmNvbSIsImp0aSI6ImIzZGYxMGJjLWVkMGItNDc1ZS1hYzljLWJlNDA5ODE3M2FkNCJ9._rCYSl7G_pgD2eFbbkuyipoK0FzUvA9Vo8GZ_dpApwI",
+    "isActive": true
+}
+```
+
+**/v1/login** : Verifica un usuario ya registrado
+
+- Recibe un token de login:
+
+```
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKZXJlbWlhc0xlaXRvbiIsImVtYWlsIjoiamVyZW1pYXNAbGVpdG9uLmNvbSIsImp0aSI6ImIzZGYxMGJjLWVkMGItNDc1ZS1hYzljLWJlNDA5ODE3M2FkNCJ9._rCYSl7G_pgD2eFbbkuyipoK0FzUvA9Vo8GZ_dpApwI"
+}
+```
+
+- Devuelve el usuario guardado:
+
+```
+{
+    "id": "98b07092-7ef4-4d41-a6a6-c2b0ee61efb5",
+    "created": "2023-03-20T22:55:47.087Z",
+    "lastLogin": "2023-03-21T00:07:40.493Z",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKZXJlbWlhc0xlaXRvbiIsImVtYWlsIjoiamVyZW1pYXNAbGVpdG9uLmNvbSIsImp0aSI6ImExYjNiZmExLTZlMWItNGE3ZS1iYWU1LWJjODE1NzE3YzgxYSJ9.kP0tQd-8aHswCkueaST91ulBXobg-76ZS5rZaZ3638M",
+    "isActive": true,
+    "name": "User Test",
+    "email": "user@test.com",
+    "password": "dEjpfjL8hgYlrfx5kFPIEw==",
+    "phones": [
+        {
+            "number": 123456789,
+            "cityCode": 2966,
+            "countryCode": "+54"
+        }
+    ]
+}
+```
